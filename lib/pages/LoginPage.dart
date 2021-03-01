@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
+
+import 'ListPage.dart';
 
 class LoginPage extends StatelessWidget{
+
+  String mail = "";
+  String pass = "";
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +22,7 @@ class LoginPage extends StatelessWidget{
             _buildHeader(),
             SizedBox(height: 15),
             _buildTitle(),
-            _buildForm(),
+            _buildForm(context),
           ],
         ),
       ),
@@ -37,7 +45,7 @@ Widget _buildTitle() {
   );
 }
 //Création formulaire
-Widget _buildForm() {
+Widget _buildForm(BuildContext context) {
   return new Container(
     // Padding
     padding: EdgeInsets.all(15),
@@ -45,7 +53,8 @@ Widget _buildForm() {
       children: <Widget>[
         new Container(
           child: TextFormField(
-            // TODO : Gérer le contenu du form
+            // Recuperer email entré par l'user
+            onChanged: (newText) { mail = newText;},
             decoration: InputDecoration(
               labelText: "Votre émail : "
             ),
@@ -54,7 +63,8 @@ Widget _buildForm() {
           SizedBox(height: 10),
           new Container(
           child: TextFormField(
-            // TODO : Gérer le contenu du form
+            // Recuperer le mdp
+            onChanged: (newText) { pass = newText;},
             decoration: InputDecoration(
               labelText: "Votre mot de passe : "
             ),
@@ -67,7 +77,19 @@ Widget _buildForm() {
               child: Text("Login"),
               color: Colors.red, 
               onPressed: () {
-                // TODO : Gérer le click
+                // TODO : Fonction de connexion
+                if(mail == "123" && pass == "123")
+                {
+                  // TODO : Vérification BDD
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => ListPage())
+                    );
+                }
+                else
+                {
+                  log("Erreur identifiants");
+                }
               },
               ),
           ),
@@ -75,7 +97,7 @@ Widget _buildForm() {
             child: FlatButton(
               child: Text("Mot de passe oublié ?"),
               onPressed: () {
-                // TODO : a gerer
+                log('Mot de passe oublié !');
               },
               ),
           )
