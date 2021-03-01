@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pages/LoginPage.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget{
@@ -14,16 +16,4 @@ class MyApp extends StatelessWidget{
     );
   }
 
-}
-class LoginPage extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Page de login"),
-        centerTitle: true,
-      ),
-      body: Text("Contenu page"),
-    );
-  }
 }
