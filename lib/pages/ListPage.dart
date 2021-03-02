@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_formations/pages/InfoPage.dart';
 import 'dart:developer';
 
 import '../Cours.dart';
@@ -27,11 +28,13 @@ class _ListPageState extends State<ListPage> {
             child: ListTile(
               onTap: () {
                 // TODO : Naviguer vers page cours cliqué
-
+                log(cours.name + "clicked !");
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => InfosPage(cours: cours)),
+                );
               },
-              leading: Image(
-                image: AssetImage(cours.image),
-              ),
+              leading: Image.asset(cours.image),
               title: Text(cours.name),
               subtitle: Row(children: <Widget>[
                 Text("29.99€ - 4.5"),
